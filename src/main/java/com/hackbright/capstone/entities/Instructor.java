@@ -1,5 +1,6 @@
 package com.hackbright.capstone.entities;
 
+import com.hackbright.capstone.dtos.InstructorDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,4 +22,10 @@ public class Instructor {
 
     @Column(columnDefinition = "instructorName")
     private String instructorName;
+
+    public Instructor(InstructorDto instructorDto){
+        if (instructorDto.getInstructorName() != null){
+            this.instructorName = instructorDto.getInstructorName();
+        }
+    }
 }

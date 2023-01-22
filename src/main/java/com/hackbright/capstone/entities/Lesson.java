@@ -1,5 +1,6 @@
 package com.hackbright.capstone.entities;
 
+import com.hackbright.capstone.dtos.LessonDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,4 +23,10 @@ public class Lesson {
 
     @Column(name = "rating")
     private Timestamp lessonTime;
+
+    public Lesson(LessonDto lessonDto){
+        if (lessonDto.getLessonTime() != null){
+            this.lessonTime = lessonDto.getLessonTime();
+        }
+    }
 }

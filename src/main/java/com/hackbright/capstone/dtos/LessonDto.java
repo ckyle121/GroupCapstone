@@ -1,25 +1,27 @@
 package com.hackbright.capstone.dtos;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import javax.persistence.*;
+import com.hackbright.capstone.entities.Lesson;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-@Entity
-@Table(name = "Books")
-//@Data
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LessonDto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class LessonDto implements Serializable {
     private Long id;
-
-    @Column(name = "rating")
     private Timestamp lessonTime;
+
+    public LessonDto(Lesson lesson){
+        if (lesson.getId() != null){
+            this.id = lesson.getId();
+        }
+        if (lesson.getLessonTime() != null){
+            this.lessonTime = lesson.getLessonTime();
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package com.hackbright.capstone.entities;
 
+import com.hackbright.capstone.dtos.PatronDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,4 +25,3 @@ public class Patron {
     private List<Order> orders;
 
 }
-
