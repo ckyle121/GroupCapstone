@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import java.util.List;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -22,6 +24,8 @@ import java.io.Serializable;
 public class PatronDto implements Serializable {
     private Long id;
     private String patronName;
+
+    private Set<LessonDto> lessonDtoSet = new HashSet<>();
 
     public PatronDto(Patron patron){
         if (patron.getId() != null){

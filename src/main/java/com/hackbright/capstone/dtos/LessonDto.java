@@ -15,6 +15,11 @@ import java.sql.Timestamp;
 public class LessonDto implements Serializable {
     private Long id;
     private Timestamp lessonTime;
+    private String instrumentType;
+
+    private InstructorDto instructorDto;
+
+    private PatronDto patronDto;
 
     public LessonDto(Lesson lesson){
         if (lesson.getId() != null){
@@ -22,6 +27,9 @@ public class LessonDto implements Serializable {
         }
         if (lesson.getLessonTime() != null){
             this.lessonTime = lesson.getLessonTime();
+        }
+        if (lesson.getInstrumentType() != null){
+            this.instrumentType = lesson.getInstrumentType();
         }
     }
 }

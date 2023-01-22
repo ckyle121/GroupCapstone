@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -13,6 +15,8 @@ import java.io.Serializable;
 public class InstructorDto implements Serializable {
     private Long id;
     private String instructorName;
+
+    private Set<LessonDto> lessonDtoSet = new HashSet<>();
 
     public InstructorDto(Instructor instructor){
         if (instructor.getId() != null){

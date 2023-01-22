@@ -1,5 +1,6 @@
 package com.hackbright.capstone.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.hackbright.capstone.dtos.LessonDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "Lesson")
+@Table(name = "Lessons")
 //@Data
 @Getter
 @Setter
@@ -21,12 +22,26 @@ public class Lesson {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "rating")
+    @Column(name = "lessonTime", unique = true)
     private Timestamp lessonTime;
+
+    @Column(name = "instrumentType")
+    private String instrumentType;
+
+    @ManyToOne
+    @JsonBackReference
+    private Instructor instructor;
+
+    @ManyToOne
+    @JsonBackReference
+    private Patron patron;
 
     public Lesson(LessonDto lessonDto){
         if (lessonDto.getLessonTime() != null){
             this.lessonTime = lessonDto.getLessonTime();
+        }
+        if (lessonDto.getInstrumentType() != null){
+            this.instrumentType = lessonDto.getInstrumentType();
         }
     }
 }
