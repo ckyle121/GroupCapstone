@@ -1,6 +1,6 @@
 package com.hackbright.capstone.dtos;
 
-import com.hackbright.capstone.entities.Order;
+import com.hackbright.capstone.entities.Lesson;
 import com.hackbright.capstone.entities.Patron;
 import lombok.AllArgsConstructor;
 import lombok.Data;

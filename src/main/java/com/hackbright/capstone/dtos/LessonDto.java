@@ -1,13 +1,14 @@
 package com.hackbright.capstone.dtos;
 
 
+import com.hackbright.capstone.entities.Instructor;
 import com.hackbright.capstone.entities.Lesson;
+import com.hackbright.capstone.entities.Patron;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.time.ZonedDateTime;
 
 @Data
@@ -15,22 +16,28 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor
 public class LessonDto implements Serializable {
     private Long id;
-    private ZonedDateTime lessonTime;
-    private String instrumentType;
+    private ZonedDateTime lesson_time;
+    private String instrument_type;
 
-    private InstructorDto instructorDto;
+    private Instructor instructor;
 
-    private PatronDto patronDto;
+    private Patron patron;
 
     public LessonDto(Lesson lesson){
         if (lesson.getId() != null){
             this.id = lesson.getId();
         }
-        if (lesson.getLessonTime() != null){
-            this.lessonTime = lesson.getLessonTime();
+        if (lesson.getLesson_time() != null){
+            this.lesson_time = lesson.getLesson_time();
         }
-        if (lesson.getInstrumentType() != null){
-            this.instrumentType = lesson.getInstrumentType();
+        if (lesson.getInstrument_type() != null){
+            this.instrument_type = lesson.getInstrument_type();
+        }
+        if (lesson.getInstructor() != null){
+            this.instructor = lesson.getInstructor();
+        }
+        if (lesson.getPatron() != null){
+            this.patron = lesson.getPatron();
         }
     }
 }
