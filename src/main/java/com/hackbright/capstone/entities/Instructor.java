@@ -11,10 +11,11 @@ import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "Instructors")
+@Table(name = "instructors")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,16 +24,10 @@ public class Instructor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "instructorName")
-    private String instructorName;
+    @Column(columnDefinition = "instructor_name")
+    private String instructor_name;
 
-    @OneToMany(mappedBy = "instructor", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JsonManagedReference
-    private Set<Lesson> lessonSet = new HashSet<>();
+    @OneToMany(mappedBy = "instructor")
+    private List<Lesson> lessons;
 
-    public Instructor(InstructorDto instructorDto){
-        if (instructorDto.getInstructorName() != null){
-            this.instructorName = instructorDto.getInstructorName();
-        }
-    }
 }

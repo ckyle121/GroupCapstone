@@ -1,9 +1,5 @@
 package com.hackbright.capstone.dtos;
 
-import com.hackbright.capstone.entities.Patron;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import com.hackbright.capstone.entities.Order;
 import com.hackbright.capstone.entities.Patron;
 import lombok.AllArgsConstructor;
@@ -14,30 +10,25 @@ import javax.persistence.Column;
 import javax.persistence.OneToMany;
 import java.util.List;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PatronDto implements Serializable {
+public class PatronDto {
     private Long id;
-    private String patronName;
 
-    private Set<LessonDto> lessonDtoSet = new HashSet<>();
+    private String patron_name;
 
-    public PatronDto(Patron patron){
-        if (patron.getId() != null){
+    private List<Lesson> lessons;
+
+    public PatronDto(Patron patron) {
+        if (patron.getId() != null) {
             this.id = patron.getId();
         }
-        if (patron.getPatronName() != null){
-            this.patronName = patron.getPatronName();
+        if (patron.getPatron_name() != null) {
+            this.patron_name = patron.getPatron_name();
         }
-    }
-
-        if (patron.getOrders() != null) {
-            this.orders = patron.getOrders();
+        if (patron.getLessons() != null) {
+            this.lessons = patron.getLessons();
         }
     }
 

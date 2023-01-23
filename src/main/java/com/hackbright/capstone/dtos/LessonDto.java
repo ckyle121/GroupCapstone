@@ -8,13 +8,14 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.ZonedDateTime;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class LessonDto implements Serializable {
     private Long id;
-    private Timestamp lessonTime;
+    private ZonedDateTime lessonTime;
     private String instrumentType;
 
     private InstructorDto instructorDto;

@@ -9,9 +9,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.ZonedDateTime;
 
 @Entity
-@Table(name = "Lessons")
+@Table(name = "lessons")
 //@Data
 @Getter
 @Setter
@@ -22,26 +23,19 @@ public class Lesson {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "lessonTime", unique = true)
-    private Timestamp lessonTime;
+    @Column(name = "lesson_time", unique = true)
+    private ZonedDateTime lesson_time;
 
-    @Column(name = "instrumentType")
-    private String instrumentType;
+    @Column(name = "instrument_type")
+    private String instrument_type;
 
     @ManyToOne
-    @JsonBackReference
+    @JoinColumn(name = "instructor_id")
     private Instructor instructor;
 
+
     @ManyToOne
-    @JsonBackReference
+    @JoinColumn(name = "patron_id")
     private Patron patron;
 
-    public Lesson(LessonDto lessonDto){
-        if (lessonDto.getLessonTime() != null){
-            this.lessonTime = lessonDto.getLessonTime();
-        }
-        if (lessonDto.getInstrumentType() != null){
-            this.instrumentType = lessonDto.getInstrumentType();
-        }
-    }
 }

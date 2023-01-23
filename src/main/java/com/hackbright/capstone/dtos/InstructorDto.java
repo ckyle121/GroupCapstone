@@ -14,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class InstructorDto implements Serializable {
     private Long id;
-    private String instructorName;
+    private String instructorame;
 
     private Set<LessonDto> lessonDtoSet = new HashSet<>();
 
