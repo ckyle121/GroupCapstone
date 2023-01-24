@@ -1,6 +1,10 @@
 HELP.md
 target/
 src/main/resources/application.properties
+application.properties
+GroupCapstone/src/main/resources/application.properties
+src/main/resources/*.properties
+*.properties
 
 ### STS ###
 .apt_generated
