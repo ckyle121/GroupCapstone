@@ -24,7 +24,7 @@ public class Instructor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "instructor_name")
+    @Column(name = "instructor_name")
     private String instructor_name;
 
     @OneToMany(mappedBy = "instructor")
