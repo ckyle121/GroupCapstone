@@ -1,5 +1,6 @@
 package com.hackbright.capstone.dtos;
 
+import com.hackbright.capstone.entities.Lesson;
 import com.hackbright.capstone.entities.Order;
 import com.hackbright.capstone.entities.Patron;
 import lombok.AllArgsConstructor;
@@ -16,21 +17,25 @@ import java.util.List;
 public class PatronDto {
     private Long id;
 
-    private String patron_name;
+    private String patronName;
+
+    private List<Lesson> lessons;
 
     private List<Order> orders;
-
 
     public PatronDto(Patron patron) {
         if (patron.getId() != null) {
             this.id = patron.getId();
         }
-        if (patron.getPatron_name() != null) {
-            this.patron_name = patron.getPatron_name();
+        if (patron.getPatronName() != null) {
+            this.patronName = patron.getPatronName();
         }
+        if (patron.getLessons() != null) {
+            this.lessons = patron.getLessons();
+        }
+
         if (patron.getOrders() != null) {
             this.orders = patron.getOrders();
         }
     }
-
 }

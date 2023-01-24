@@ -1,5 +1,6 @@
 package com.hackbright.capstone.entities;
 
+import com.hackbright.capstone.dtos.PatronDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,10 +19,26 @@ public class Patron {
     private Long id;
 
     @Column(name = "patron_name")
-    private String patron_name;
+    private String patronName;
+
+    @OneToMany(mappedBy = "patron")
+    private List<Lesson> lessons;
 
     @OneToMany(mappedBy = "patron")
     private List<Order> orders;
 
+    public Patron (PatronDto patronDto) {
+        if (patronDto.getId() != null) {
+            this.id = patronDto.getId();
+        }
+        if (patronDto.getPatronName() != null) {
+            this.patronName = patronDto.getPatronName();
+        }
+        if (patronDto.getLessons() != null) {
+            this.lessons = patronDto.getLessons();
+        }
+        if (patronDto.getOrders() != null) {
+            this.orders = patronDto.getOrders();
+        }
+    }
 }
-
