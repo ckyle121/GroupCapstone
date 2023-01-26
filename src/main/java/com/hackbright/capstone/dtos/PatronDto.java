@@ -1,14 +1,11 @@
 package com.hackbright.capstone.dtos;
 
 import com.hackbright.capstone.entities.Lesson;
-import com.hackbright.capstone.entities.Order;
 import com.hackbright.capstone.entities.Patron;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.OneToMany;
 import java.util.List;
 
 @Data
@@ -21,7 +18,6 @@ public class PatronDto {
 
     private List<Lesson> lessons;
 
-    private List<Order> orders;
 
     public PatronDto(Patron patron) {
         if (patron.getId() != null) {
@@ -32,10 +28,6 @@ public class PatronDto {
         }
         if (patron.getLessons() != null) {
             this.lessons = patron.getLessons();
-        }
-
-        if (patron.getOrders() != null) {
-            this.orders = patron.getOrders();
         }
     }
 }

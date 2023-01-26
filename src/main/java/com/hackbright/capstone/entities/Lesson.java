@@ -33,9 +33,12 @@ public class Lesson {
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
 
-
     @ManyToOne
     @JoinColumn(name = "patron_id")
     private Patron patron;
+
+    @ManyToOne
+    @JoinColumn(name = "instrument_id")
+    private Instrument instrument;
 
 }

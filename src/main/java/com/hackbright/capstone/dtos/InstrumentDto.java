@@ -1,12 +1,11 @@
 package com.hackbright.capstone.dtos;
 
 import com.hackbright.capstone.entities.Instrument;
-import com.hackbright.capstone.entities.Order;
+import com.hackbright.capstone.entities.Lesson;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.util.List;
 
 @Data
@@ -18,7 +17,8 @@ public class InstrumentDto {
     private String instrument_name;
     private Integer price;
     private Integer quantity;
-    private List<Order> orders;
+
+    private List<Lesson> lessons;
 
     public InstrumentDto(Instrument instrument) {
         if (instrument.getId()  !=  null) {
@@ -33,8 +33,8 @@ public class InstrumentDto {
         if (instrument.getQuantity()  !=  null) {
             this.quantity = instrument.getQuantity();
         }
-        if (instrument.getOrders()  !=  null) {
-            this.orders = instrument.getOrders();
+        if (instrument.getLessons() != null){
+            this.lessons = instrument.getLessons();
         }
     }
 }

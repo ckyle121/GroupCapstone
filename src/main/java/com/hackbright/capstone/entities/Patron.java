@@ -24,8 +24,6 @@ public class Patron {
     @OneToMany(mappedBy = "patron")
     private List<Lesson> lessons;
 
-    @OneToMany(mappedBy = "patron")
-    private List<Order> orders;
 
     public Patron (PatronDto patronDto) {
         if (patronDto.getId() != null) {
@@ -36,9 +34,6 @@ public class Patron {
         }
         if (patronDto.getLessons() != null) {
             this.lessons = patronDto.getLessons();
-        }
-        if (patronDto.getOrders() != null) {
-            this.orders = patronDto.getOrders();
         }
     }
 }
