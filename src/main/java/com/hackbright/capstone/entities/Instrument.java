@@ -28,23 +28,6 @@ public class Instrument {
     private Integer quantity;
 
     @OneToMany(mappedBy = "instrument")
-    private List<Order> orders;
+    private List<Lesson> lessons;
 
-    public Instrument (InstrumentDto instrumentDto) {
-        if(instrumentDto.getId() != null) {
-            this.id = instrumentDto.getId();
-        }
-        if(instrumentDto.getInstrument_name() != null) {
-            this.instrument_name = instrumentDto.getInstrument_name();
-        }
-        if(instrumentDto.getPrice() != null) {
-            this.price = instrumentDto.getPrice();
-        }
-        if(instrumentDto.getQuantity() != null) {
-            this.quantity = instrumentDto.getQuantity();
-        }
-        if(instrumentDto.getOrders() != null) {
-            this.orders = instrumentDto.getOrders();
-        }
-    }
 }
