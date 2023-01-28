@@ -12,17 +12,17 @@ import java.util.Optional;
 public interface LessonService {
 
     @Transactional
-    List<String> addLesson(LessonDto lessonDto);
+    List<String> addLesson(LessonDto lessonDto, Long patronId, Long instructorId);
 
     List<LessonDto> getAllLessonsByInstructorId(Long instructorId);
 
     List<LessonDto> getAllLessonsByPatronId(Long patronId);
 
-    @Transactional
+/*    @Transactional
     void addLessonByInstructorId(LessonDto lessonDto, Long instructorId);
 
     @Transactional
-    void addLessonByPatronId(LessonDto lessonDto, Long patronId);
+    void addLessonByPatronId(LessonDto lessonDto, Long patronId);*/
 
     @Transactional
     void deleteLessonById(Long lessonId);

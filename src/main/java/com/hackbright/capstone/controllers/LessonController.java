@@ -19,9 +19,9 @@ public class LessonController {
         return lessonService.getAllLessonsByInstructorId(instructorId);
     }
 
-    @PostMapping("/instructor/{instructorId}")
-    public void addLesson(@RequestBody LessonDto lessonDto, @PathVariable Long instructorId){
-        lessonService.addLesson(lessonDto, instructorId);
+    @PostMapping("/instructor/{instructorId}/{patronId}")
+    public void addLesson(@RequestBody LessonDto lessonDto, @PathVariable Long instructorId, @PathVariable Long patronId){
+        lessonService.addLesson(lessonDto, instructorId, patronId);
     }
 
     @DeleteMapping("/{lessonId}")

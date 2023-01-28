@@ -5,6 +5,7 @@ import com.hackbright.capstone.dtos.PatronDto;
 import com.hackbright.capstone.entities.Instructor;
 import com.hackbright.capstone.entities.Lesson;
 import com.hackbright.capstone.entities.Patron;
+import com.hackbright.capstone.repositories.InstructorRepository;
 import com.hackbright.capstone.repositories.InstrumentRepository;
 import com.hackbright.capstone.repositories.LessonRepository;
 import com.hackbright.capstone.repositories.PatronRepository;
@@ -29,6 +30,9 @@ public class LessonServiceImpl implements LessonService {
     @Autowired
     private InstrumentRepository instrumentRepository;
 
+    @Autowired
+    private InstructorRepository instructorRepository;
+
     @Override
     public List<LessonDto> getAllLessonsByInstructorId(Long instructorId){
         Optional<Instructor> doctorOptional = instructorRepository.findById(instructorId);
@@ -49,7 +53,7 @@ public class LessonServiceImpl implements LessonService {
         return Collections.emptyList();
     }
 
-    @Override
+    /*@Override
     @Transactional
     public void addLessonByInstructorId(LessonDto lessonDto, Long instructorId) {
         Optional<Instructor> instructorOptional = instructorRepository.findById(instructorId);
@@ -57,12 +61,16 @@ public class LessonServiceImpl implements LessonService {
         instructorOptional.ifPresent(lesson::setInstructor);
         lessonRepository.saveAndFlush(lesson);
     }
-
+*/
     @Override
     @Transactional
-    public List<String> addLesson(LessonDto lessonDto){
+    public List<String> addLesson(LessonDto lessonDto, Long patronId, Long instructorId){
         List<String> response = new ArrayList<>();
         Lesson lesson = new Lesson(lessonDto);
+        Optional<Instructor> instructorOptional = instructorRepository.findById(instructorId);
+        instructorOptional.ifPresent(lesson::setInstructor);
+        Optional<Patron> patronOptional = patronRepository.findById(patronId);
+        patronOptional.ifPresent(lesson::setPatron);
         lessonRepository.saveAndFlush(lesson);
         //this will change
         response.add("http://localhost:8080/templates/lesson.html");
@@ -70,14 +78,14 @@ public class LessonServiceImpl implements LessonService {
     }
 
 
-    @Override
+/*    @Override
     @Transactional
     public void addLessonByPatronId(LessonDto lessonDto, Long patronId) {
         Optional<Patron> patronOptional = patronRepository.findById(patronId);
         Lesson lesson = new Lesson(lessonDto);
         patronOptional.ifPresent(lesson::setPatron);
         lessonRepository.saveAndFlush(lesson);
-    }
+    }*/
 
     @Override
     @Transactional

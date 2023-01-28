@@ -43,7 +43,7 @@ public class PatronServiceImpl implements PatronService {
         patientOptional.ifPresent(patron -> {
             patron.setPatronName(patronDto.getPatronName());
             patron.setLessons(patronDto.getLessons());
-            patron.setOrders(patronDto.getOrders());
+            //patron.setOrders(patronDto.getOrders());
             patronRepository.saveAndFlush(patron);
         });
     }
