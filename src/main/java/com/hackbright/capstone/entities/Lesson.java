@@ -26,9 +26,6 @@ public class Lesson {
     @Column(name = "lesson_time", unique = true)
     private ZonedDateTime lesson_time;
 
-    @Column(name = "instrument_type")
-    private String instrument_type;
-
     @ManyToOne
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
@@ -41,4 +38,18 @@ public class Lesson {
     @JoinColumn(name = "instrument_id")
     private Instrument instrument;
 
+    public Lesson(LessonDto lessonDto) {
+        if (lessonDto.getLesson_time() != null) {
+            this.lesson_time = lessonDto.getLesson_time();
+        }
+        if (lessonDto.getInstructor() != null) {
+            this.instructor = lessonDto.getInstructor();
+        }
+        if (lessonDto.getPatron() != null) {
+            this.patron = lessonDto.getPatron();
+        }
+        if (lessonDto.getInstrument() != null) {
+            this.instrument = lessonDto.getInstrument();
+        }
+    }
 }
