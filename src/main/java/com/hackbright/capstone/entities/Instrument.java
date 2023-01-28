@@ -33,4 +33,13 @@ public class Instrument {
     @JsonBackReference
     private List<Lesson> lessons;
 
+    public Instrument(InstrumentDto instrumentDto) {
+        if (instrumentDto.getInstrument_name() != null) {
+            this.instrument_name = instrumentDto.getInstrument_name();
+        } if (instrumentDto.getPrice() != null) {
+            this.price = instrumentDto.getPrice();
+        }if (instrumentDto.getQuantity() != null) {
+            this.quantity = instrumentDto.getQuantity();
+        }
+    }
 }
