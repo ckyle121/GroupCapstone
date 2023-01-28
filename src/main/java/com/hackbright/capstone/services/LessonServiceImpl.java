@@ -64,13 +64,9 @@ public class LessonServiceImpl implements LessonService {
 */
     @Override
     @Transactional
-    public List<String> addLesson(LessonDto lessonDto, Long patronId, Long instructorId){
+    public List<String> addLesson(LessonDto lessonDto){
         List<String> response = new ArrayList<>();
         Lesson lesson = new Lesson(lessonDto);
-        Optional<Instructor> instructorOptional = instructorRepository.findById(instructorId);
-        instructorOptional.ifPresent(lesson::setInstructor);
-        Optional<Patron> patronOptional = patronRepository.findById(patronId);
-        patronOptional.ifPresent(lesson::setPatron);
         lessonRepository.saveAndFlush(lesson);
         //this will change
         response.add("http://localhost:8080/templates/lesson.html");

@@ -14,14 +14,14 @@ public class LessonController {
     @Autowired
     private LessonService lessonService;
 
-    @GetMapping("/lesson/{instructorId}")
+    @GetMapping("/{instructorId}")
     public List<LessonDto> getLessonsByInstructor(@PathVariable Long instructorId){
         return lessonService.getAllLessonsByInstructorId(instructorId);
     }
 
-    @PostMapping("/instructor/{instructorId}/{patronId}")
-    public void addLesson(@RequestBody LessonDto lessonDto, @PathVariable Long instructorId, @PathVariable Long patronId){
-        lessonService.addLesson(lessonDto, instructorId, patronId);
+    @PostMapping("/")
+    public void addLesson(@RequestBody LessonDto lessonDto){
+        lessonService.addLesson(lessonDto);
     }
 
     @DeleteMapping("/{lessonId}")

@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface LessonService {
 
     @Transactional
-    List<String> addLesson(LessonDto lessonDto, Long patronId, Long instructorId);
+    List<String> addLesson(LessonDto lessonDto);
 
     List<LessonDto> getAllLessonsByInstructorId(Long instructorId);
 
