@@ -1,5 +1,7 @@
 package com.hackbright.capstone.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.hackbright.capstone.dtos.PatronDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +24,7 @@ public class Patron {
     private String patronName;
 
     @OneToMany(mappedBy = "patron")
+    @JsonBackReference
     private List<Lesson> lessons;
 
 

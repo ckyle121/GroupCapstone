@@ -1,5 +1,7 @@
 package com.hackbright.capstone.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.hackbright.capstone.dtos.InstrumentDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +30,7 @@ public class Instrument {
     private Integer quantity;
 
     @OneToMany(mappedBy = "instrument")
+    @JsonBackReference
     private List<Lesson> lessons;
 
 }

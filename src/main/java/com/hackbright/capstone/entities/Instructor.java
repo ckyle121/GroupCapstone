@@ -1,5 +1,6 @@
 package com.hackbright.capstone.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.hackbright.capstone.dtos.InstructorDto;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,7 @@ public class Instructor {
     private String instructor_name;
 
     @OneToMany(mappedBy = "instructor")
+    @JsonBackReference
     private List<Lesson> lessons;
 
 }

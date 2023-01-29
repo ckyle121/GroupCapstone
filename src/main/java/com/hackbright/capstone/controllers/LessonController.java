@@ -14,7 +14,7 @@ public class LessonController {
     @Autowired
     private LessonService lessonService;
 
-    @GetMapping("/{instructorId}")
+    /*@GetMapping("/{instructorId}")
     public List<LessonDto> getLessonsByInstructor(@PathVariable Long instructorId){
         return lessonService.getAllLessonsByInstructorId(instructorId);
     }
@@ -23,7 +23,7 @@ public class LessonController {
     public List<LessonDto> getLessonsByPatron(@PathVariable Long patronId){
         return lessonService.getAllLessonsByPatronId(patronId);
     }
-
+*/
     @GetMapping
     public List<LessonDto> getAllLessons(){
         return lessonService.getAllLessons();
@@ -39,7 +39,7 @@ public class LessonController {
         lessonService.deleteLessonById(lessonId);
     }
 
-    @PutMapping("/")
+    @PutMapping
     public void updateLesson(@RequestBody LessonDto lessonDto){
         lessonService.updateLessonById(lessonDto);
     }

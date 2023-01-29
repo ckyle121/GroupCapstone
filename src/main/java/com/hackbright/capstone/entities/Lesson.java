@@ -1,6 +1,7 @@
 package com.hackbright.capstone.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.hackbright.capstone.dtos.LessonDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
