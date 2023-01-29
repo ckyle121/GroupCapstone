@@ -1,10 +1,13 @@
 HELP.md
 target/
 src/main/resources/application.properties
-application.properties
+src/main/resources/application.properties
 GroupCapstone/src/main/resources/application.properties
 src/main/resources/*.properties
 *.properties
+.application.properties
+C:\Users\Jessica\_HB folder\Java Program\GroupCapstone\src\main\application.properties
+src/main/resources/application.properties
 
 ### STS ###
 .apt_generated

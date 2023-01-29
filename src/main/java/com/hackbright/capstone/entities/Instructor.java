@@ -3,6 +3,7 @@ package com.hackbright.capstone.entities;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.hackbright.capstone.dtos.InstructorDto;
+import com.hackbright.capstone.dtos.InstrumentDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,9 +27,21 @@ public class Instructor {
     private Long id;
 
     @Column(name = "instructor_name")
-    private String instructor_name;
+    private String instructorName;
 
     @OneToMany(mappedBy = "instructor")
     @JsonBackReference
     private List<Lesson> lessons;
+
+    public Instructor (InstructorDto instructorDto) {
+        if (instructorDto.getId() != null) {
+            this.id = instructorDto.getId();
+        }
+        if (instructorDto.getInstructorName() != null) {
+            this.instructorName = instructorDto.getInstructorName();
+        }
+        if (instructorDto.getLessons() != null) {
+            this.lessons = instructorDto.getLessons();
+        }
+    }
 }

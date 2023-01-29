@@ -14,10 +14,10 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class InstructorDto implements Serializable {
+public class InstructorDto {
     private Long id;
 
-    private String instructor_name;
+    private String instructorName;
 
     private List<Lesson> lessons;
 
@@ -25,8 +25,8 @@ public class InstructorDto implements Serializable {
         if (instructor.getId() != null){
             this.id = instructor.getId();
         }
-        if (instructor.getInstructor_name() != null){
-            this.instructor_name = instructor.getInstructor_name();
+        if (instructor.getInstructorName() != null){
+            this.instructorName = instructor.getInstructorName();
         }
         if (instructor.getLessons() != null){
             this.lessons = instructor.getLessons();
