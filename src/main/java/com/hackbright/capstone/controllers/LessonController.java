@@ -19,6 +19,16 @@ public class LessonController {
         return lessonService.getAllLessonsByInstructorId(instructorId);
     }
 
+    @GetMapping("/{patronId}")
+    public List<LessonDto> getLessonsByPatron(@PathVariable Long patronId){
+        return lessonService.getAllLessonsByPatronId(patronId);
+    }
+
+    @GetMapping("/")
+    public List<LessonDto> getAllLessons(){
+        return lessonService.getAllLessons();
+    }
+
     @PostMapping("/")
     public void addLesson(@RequestBody LessonDto lessonDto){
         lessonService.addLesson(lessonDto);

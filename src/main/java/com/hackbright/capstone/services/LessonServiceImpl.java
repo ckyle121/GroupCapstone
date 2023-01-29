@@ -12,6 +12,7 @@ import com.hackbright.capstone.repositories.PatronRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,6 +34,7 @@ public class LessonServiceImpl implements LessonService {
     @Autowired
     private InstructorRepository instructorRepository;
 
+
     @Override
     public List<LessonDto> getAllLessonsByInstructorId(Long instructorId){
         Optional<Instructor> doctorOptional = instructorRepository.findById(instructorId);
@@ -53,15 +55,6 @@ public class LessonServiceImpl implements LessonService {
         return Collections.emptyList();
     }
 
-    /*@Override
-    @Transactional
-    public void addLessonByInstructorId(LessonDto lessonDto, Long instructorId) {
-        Optional<Instructor> instructorOptional = instructorRepository.findById(instructorId);
-        Lesson lesson = new Lesson(lessonDto);
-        instructorOptional.ifPresent(lesson::setInstructor);
-        lessonRepository.saveAndFlush(lesson);
-    }
-*/
     @Override
     @Transactional
     public List<String> addLesson(LessonDto lessonDto){
@@ -72,16 +65,6 @@ public class LessonServiceImpl implements LessonService {
         response.add("http://localhost:8080/templates/lesson.html");
         return response;
     }
-
-
-/*    @Override
-    @Transactional
-    public void addLessonByPatronId(LessonDto lessonDto, Long patronId) {
-        Optional<Patron> patronOptional = patronRepository.findById(patronId);
-        Lesson lesson = new Lesson(lessonDto);
-        patronOptional.ifPresent(lesson::setPatron);
-        lessonRepository.saveAndFlush(lesson);
-    }*/
 
     @Override
     @Transactional

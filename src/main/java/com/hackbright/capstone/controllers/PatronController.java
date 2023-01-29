@@ -14,9 +14,25 @@ public class PatronController {
     @Autowired
     private PatronService patronService;
 
-    @GetMapping("")
+    @GetMapping("/")
     public List<PatronDto> getAllPatrons(){
         return patronService.getAllPatrons();
     }
+
+    @PostMapping("/")
+    public void addPatron(@RequestBody PatronDto patronDto){
+        patronService.addPatron(patronDto);
+    }
+
+    @DeleteMapping("/{patronId}")
+    public void deletePatronById(@PathVariable Long patronId){
+        patronService.deletePatronById(patronId);
+    }
+
+    @PutMapping("/")
+    public void updatePatron(@RequestBody PatronDto patronDto){
+        patronService.updatePatronById(patronDto);
+    }
+
 
 }
