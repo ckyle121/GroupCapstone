@@ -1,6 +1,5 @@
 package com.hackbright.capstone.controllers;
 
-import com.hackbright.capstone.dtos.LessonDto;
 import com.hackbright.capstone.dtos.PatronDto;
 import com.hackbright.capstone.services.PatronService;
 import org.springframework.beans.factory.annotation.Autowired;
