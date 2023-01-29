@@ -29,9 +29,6 @@ public class LessonServiceImpl implements LessonService {
     private LessonRepository lessonRepository;
 
     @Autowired
-    private InstrumentRepository instrumentRepository;
-
-    @Autowired
     private InstructorRepository instructorRepository;
 
 
