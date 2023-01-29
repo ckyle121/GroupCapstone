@@ -33,6 +33,4 @@ public class PatronController {
     public void updatePatron(@RequestBody PatronDto patronDto){
         patronService.updatePatronById(patronDto);
     }
-
-
 }
