@@ -31,5 +31,4 @@ public class Instructor {
     @OneToMany(mappedBy = "instructor")
     @JsonBackReference
     private List<Lesson> lessons;
-
 }
