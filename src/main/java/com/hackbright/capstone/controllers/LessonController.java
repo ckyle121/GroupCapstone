@@ -24,12 +24,12 @@ public class LessonController {
         return lessonService.getAllLessonsByPatronId(patronId);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<LessonDto> getAllLessons(){
         return lessonService.getAllLessons();
     }
 
-    @PostMapping("/")
+    @PostMapping
     public void addLesson(@RequestBody LessonDto lessonDto){
         lessonService.addLesson(lessonDto);
     }

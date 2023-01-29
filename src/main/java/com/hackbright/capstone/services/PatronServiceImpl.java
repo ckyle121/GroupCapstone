@@ -1,6 +1,8 @@
 package com.hackbright.capstone.services;
 
+import com.hackbright.capstone.dtos.LessonDto;
 import com.hackbright.capstone.dtos.PatronDto;
+import com.hackbright.capstone.entities.Lesson;
 import com.hackbright.capstone.entities.Patron;
 import com.hackbright.capstone.repositories.PatronRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,15 @@ public class PatronServiceImpl implements PatronService {
             patron.setLessons(patronDto.getLessons());
             patronRepository.saveAndFlush(patron);
         });
+    }
+
+    @Override
+    public Optional<PatronDto> getPatronById(Long patronId) {
+        Optional<Patron> patronOptional = patronRepository.findById(patronId);
+        if (patronOptional.isPresent()){
+            return Optional.of(new PatronDto(patronOptional.get()));
+        }
+        return Optional.empty();
     }
 
     @Override
