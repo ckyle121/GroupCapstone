@@ -1,18 +1,22 @@
 package com.hackbright.capstone.services;
 
 import com.hackbright.capstone.dtos.InstructorDto;
-import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
-@Service
 public interface InstructorService {
-
     @Transactional
-    void addInstructor(InstructorDto instructorDto);
+    List<String> addInstructor(InstructorDto instructorDto);
+
     @Transactional
     void deleteInstructor(Long instructorId);
+
+    @Transactional
+    void updateInstructor(InstructorDto instructorDto);
+
     List<InstructorDto> getAllInstructors();
 
+    Optional<InstructorDto> getInstructorById(Long instructorId);
 }

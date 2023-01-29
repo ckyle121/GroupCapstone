@@ -1,42 +1,44 @@
 package com.hackbright.capstone.controllers;
 
 import com.hackbright.capstone.dtos.InstrumentDto;
+import com.hackbright.capstone.dtos.PatronDto;
 import com.hackbright.capstone.services.InstrumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
-@RequestMapping("/api/v1/instrument")
+@RequestMapping("/api/v1/instruments")
 public class InstrumentController {
 
     @Autowired
     private InstrumentService instrumentService;
 
-    @PostMapping("/addInstrument/{instrumentId}")
-    public void addInstrument (@RequestBody InstrumentDto instrumentDto, @PathVariable Long instrumentId) {
+    @PostMapping
+    public void addInstrument (@RequestBody InstrumentDto instrumentDto) {
         instrumentService.addInstrument(instrumentDto);
     }
 
-    @DeleteMapping("/deleteInstrument")
-    public void deleteInstrument (InstrumentDto instrumentDto) {
-        instrumentService.deleteInstrument(instrumentDto);
+    @DeleteMapping("/{instrumentId}")
+    public void deleteInstrument (@PathVariable Long instrumentId) {
+        instrumentService.deleteInstrument(instrumentId);
     }
 
-    @PostMapping("/createInstrument")
-    public void createInstrument (InstrumentDto instrumentDto) {
-        instrumentService.createInstrument(instrumentDto);
+    @PutMapping
+    public void updateInstrument (@RequestBody InstrumentDto instrumentDto) {
+        instrumentService.updateInstrument(instrumentDto);
     }
 
-    @GetMapping("/getAllInventory")
-    public void getAllInventory() {
-        System.out.println(instrumentService.getAllInventory());
+    @GetMapping
+    public List<InstrumentDto> getAllInstruments() {
+        return instrumentService.getAllInstruments();
     }
 
-    @GetMapping("/test")
-    public void test() {
-        InstrumentDto instrumentDto = new InstrumentDto(null, "Trombone", 199, 8, null);
-        instrumentService.createInstrument(instrumentDto);
-        System.out.println(instrumentDto);
+    @GetMapping("/{instrumentId}")
+    public Optional<InstrumentDto> getInstrumentById(@PathVariable Long instrumentId) {
+        return instrumentService.getInstrumentById(instrumentId);
     }
 
 }

@@ -5,34 +5,48 @@ import com.hackbright.capstone.services.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 
 @RestController
-@RequestMapping("/api/v1/instructor")
+@RequestMapping("/api/v1/instructors")
 public class InstructorController {
 
     @Autowired
     private InstructorService instructorService;
 
-    @PostMapping("/addInstructor")
-    public void addInstructor (InstructorDto instructorDto) {
+    @PostMapping
+    public void addInstructor (@RequestBody InstructorDto instructorDto) {
         instructorService.addInstructor(instructorDto);
     }
 
-    @DeleteMapping("/deleteInstructor")
-    public void deleteInstructor (Long instructorId) {
+    @DeleteMapping("/{instructorId}")
+    public void deleteInstructor (@PathVariable Long instructorId) {
         instructorService.deleteInstructor(instructorId);
     }
 
-    @GetMapping("/getAllInstructors")
-    public void getAllInstructors() {
-        System.out.println(instructorService.getAllInstructors());
+    @GetMapping
+    public List<InstructorDto> getAllInstructors() {
+        return instructorService.getAllInstructors();
     }
 
-    @GetMapping("/test")
+    @PutMapping
+    public void updateInstructor(@RequestBody InstructorDto instructorDto){
+        instructorService.updateInstructor(instructorDto);
+    }
+
+    @GetMapping("/{instructorId}")
+    public Optional<InstructorDto> geInstructorById(@PathVariable Long instructorId){
+        return instructorService.getInstructorById(instructorId);
+    }
+
+
+ /*   @GetMapping("/test")
     public void test() {
         InstructorDto instructorDto = new InstructorDto(null, "Jacob", null);
         instructorService.addInstructor(instructorDto);
         System.out.println(instructorDto);
-    }
+    }*/
 
 }

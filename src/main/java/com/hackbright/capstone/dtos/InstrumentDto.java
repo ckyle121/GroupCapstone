@@ -14,7 +14,7 @@ import java.util.List;
 public class InstrumentDto {
 
     private Long id;
-    private String instrument_name;
+    private String instrumentName;
     private Integer price;
     private Integer quantity;
 
@@ -24,8 +24,8 @@ public class InstrumentDto {
         if (instrument.getId()  !=  null) {
             this.id = instrument.getId();
         }
-        if (instrument.getInstrument_name()  !=  null) {
-            this.instrument_name = instrument.getInstrument_name();
+        if (instrument.getInstrumentName()  !=  null) {
+            this.instrumentName = instrument.getInstrumentName();
         }
         if (instrument.getPrice()  !=  null) {
             this.price = instrument.getPrice();

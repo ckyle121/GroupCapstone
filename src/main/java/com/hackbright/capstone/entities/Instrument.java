@@ -21,7 +21,7 @@ public class Instrument {
     private Long id;
 
     @Column(name = "instrument_name")
-    private String instrument_name;
+    private String instrumentName;
 
     @Column(name = "price")
     private Integer price;
@@ -34,8 +34,8 @@ public class Instrument {
     private List<Lesson> lessons;
 
     public Instrument(InstrumentDto instrumentDto) {
-        if (instrumentDto.getInstrument_name() != null) {
-            this.instrument_name = instrumentDto.getInstrument_name();
+        if (instrumentDto.getInstrumentName() != null) {
+            this.instrumentName = instrumentDto.getInstrumentName();
         } if (instrumentDto.getPrice() != null) {
             this.price = instrumentDto.getPrice();
         }if (instrumentDto.getQuantity() != null) {
