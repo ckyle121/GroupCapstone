@@ -1,0 +1,13 @@
+/* everything */
+* {
+    background-color: #F2380F;
+    font-family: 'Roboto', sans-serif;
+    color: #F2B705;
+}
+
+/* the title */
+h1 {
+    text-align: center;
+}
+
+/* lesson cards */
