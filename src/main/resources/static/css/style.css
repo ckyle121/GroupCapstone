@@ -1,13 +1,38 @@
 /* everything */
 * {
-    background-color: #F2380F;
-    font-family: 'Roboto', sans-serif;
-    color: #F2B705;
+        background-color: #B4CF66;
+        font-family: 'Roboto', sans-serif;
+        color: #F2B705;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        scroll-behavior: smooth;
+        text-align: center;
 }
 
 /* the title */
 h1 {
     text-align: center;
+    color: #FF5A33;
 }
 
 /* lesson cards */
+.container, h2, h4 {
+    margin: 1rem;
+    padding: 0.5rem;
+    background-color: #146152;
+    border-radius: 10px;
+}
+
+/*delete button*/
+.delete-btn {
+
+    color: white;
+    padding: 8px;
+    background-color: red;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+    outline-style: solid;
+    outline-color: var(--gray-color);
+}
