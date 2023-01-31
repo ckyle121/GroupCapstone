@@ -9,6 +9,16 @@ const headers = {
 }
 
 // GET ALL LESSON FUNCTION
+async function getAllLessons() {
+    await fetch(`${baseUrl}`, {
+        method: "GET",
+        headers: headers
+
+    })
+        .then(response => response.json())
+        .then(data => createLessonCards(data))
+        .catch(err => console.error(err))
+}
 
 // CREATE LESSON CARDS
 const createLessonCards = (array) => {
@@ -25,14 +35,14 @@ const createLessonCards = (array) => {
         var instrumentObj = obj.instrument
         var instrumentArray = Object.values(instrumentObj);
         var instrumentName = instrumentArray[1]
-        console.log(lessonId)
-        console.log(lessonTime)
-        console.log(patronObj)
-        console.log(patronName)
-        console.log(instructorObj)
-        console.log(instructorName)
-        console.log(instrumentObj)
-        console.log(instrumentName)
+//        console.log(lessonId)
+//        console.log(lessonTime)
+//        console.log(patronObj)
+//        console.log(patronName)
+//        console.log(instructorObj)
+//        console.log(instructorName)
+//        console.log(instrumentObj)
+//        console.log(instrumentName)
         let lessonCard = document.createElement("div")
         lessonCard.innerHTML = `
             <h2>${patronName} with ${instructorName}</h2>
@@ -40,6 +50,7 @@ const createLessonCards = (array) => {
             <h4>${instrumentName}</h4>
             <button class="delete-btn" onclick="handleDelete(${obj.id})">Delete</button>  
         `
+        lessonContainer.append(lessonCard)
     })
 }
 
@@ -47,15 +58,4 @@ const createLessonCards = (array) => {
 
 
 // CALL GET ALL LESSONS FUNCTION
-async function getAllLessons() {
-    await fetch(`${baseUrl}`, {
-        method: "GET",
-        headers: headers
-
-    })
-        .then(response => response.json())
-        .then(data => createLessonCards(data))
-        .catch(err => console.error(err))
-}
-
 getAllLessons()
