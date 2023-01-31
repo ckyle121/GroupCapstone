@@ -35,14 +35,14 @@ const createLessonCards = (array) => {
         var instrumentObj = obj.instrument
         var instrumentArray = Object.values(instrumentObj);
         var instrumentName = instrumentArray[1]
-//        console.log(lessonId)
-//        console.log(lessonTime)
-//        console.log(patronObj)
-//        console.log(patronName)
-//        console.log(instructorObj)
-//        console.log(instructorName)
-//        console.log(instrumentObj)
-//        console.log(instrumentName)
+        console.log(lessonId)
+        console.log(lessonTime)
+        console.log(patronObj)
+        console.log(patronName)
+        console.log(instructorObj)
+        console.log(instructorName)
+        console.log(instrumentObj)
+        console.log(instrumentName)
         let lessonCard = document.createElement("div")
         lessonCard.innerHTML = `
             <h2>${patronName} with ${instructorName}</h2>
@@ -55,7 +55,15 @@ const createLessonCards = (array) => {
 }
 
 // DELETE LESSON FUNCTION
+async function handleDelete(lessonId){
+    await fetch(baseUrl + lessonId, {
+        method: "DELETE",
+        headers: headers
+    })
+        .catch(err => console.error(err))
 
+    return getAllLessons();
+}
 
 // CALL GET ALL LESSONS FUNCTION
 getAllLessons()
