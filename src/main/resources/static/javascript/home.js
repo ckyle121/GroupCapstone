@@ -55,7 +55,15 @@ const createLessonCards = (array) => {
 }
 
 // DELETE LESSON FUNCTION
+async function handleDelete(lessonId){
+    await fetch(baseUrl + lessonId, {
+        method: "DELETE",
+        headers: headers
+    })
+        .catch(err => console.error(err))
 
+    return getAllLessons();
+}
 
 // CALL GET ALL LESSONS FUNCTION
 getAllLessons()
