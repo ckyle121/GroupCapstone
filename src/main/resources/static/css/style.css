@@ -17,11 +17,17 @@ h1 {
 }
 
 /* lesson cards */
-.container, h2, h4 {
+.container, h2, h4, form {
     margin: 1rem;
     padding: 0.5rem;
     background-color: #146152;
     border-radius: 10px;
+}
+
+input {
+    background-color: #FF5A33;
+    padding: 0.75rem;
+    margin: 0.25rem;
 }
 
 /*delete button*/
@@ -30,6 +36,18 @@ h1 {
     color: white;
     padding: 8px;
     background-color: red;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+    outline-style: solid;
+    outline-color: var(--gray-color);
+}
+
+/*add button*/
+.add-btn {
+    color: white;
+    padding: 8px;
+    background-color: rgb(179, 0, 255);
     border-radius: 10px;
     margin: 10px;
     cursor: pointer;
