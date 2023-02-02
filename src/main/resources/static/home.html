@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rrel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
 </head>
 <body>
 
@@ -16,6 +16,36 @@
 
 <!--LESSON CARDS-->
 <div class="container" id="lessonContainer"></div>
+
+
+<!--ADD LESSON CONTAINER-->
+
+<div class="container">
+    <input
+            type="text"
+            placeholder="Patron Name"
+            name="Patron"
+            value="Patron"
+            id="patron"
+    >
+    <input
+            type="text"
+            placeholder="Instructor Name"
+            name="Instructor"
+            value="Instructor"
+            id="instructor"
+    >
+    <input
+            type="text"
+            placeholder="Instrument Type"
+            name="Instrument"
+            value="Instrument"
+            id="instrument"
+    >
+<!--    ADD INPUT VALUE FOR TIMESTAMP-->
+
+    <button class="add-btn">Add Lesson</button>
+</div>
 
 <script src="./javascript/home.js" type="application/javascript"></script>
 </body>

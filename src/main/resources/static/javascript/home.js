@@ -8,6 +8,31 @@ const headers = {
     'Content-Type': 'application/json'
 }
 
+
+async function addNote() {
+    const patron = document.querySelector(".patron").value;
+    const instrument = document.querySelector(".instrument").value;
+    const instructor = document.querySelector(".instructor").value;
+    // NEED TO ALSO GET THE TIMESTAMP
+    // const lessonTime =
+
+    const response = await fetch(`${baseUrl}`, {
+        method: "POST",
+        body: JSON.stringify({
+            patron,
+            instructor,
+            instrument,
+            // TIMESTAMP
+        }),
+        headers: headers
+    })
+        .catch(err => console.error(err.message))
+    if (response.status == 200) {
+        return getAllLessons();
+    }
+}
+
+
 // GET ALL LESSON FUNCTION
 async function getAllLessons() {
     await fetch(`${baseUrl}`, {
@@ -24,6 +49,7 @@ async function getAllLessons() {
 const createLessonCards = (array) => {
     lessonContainer.innerHTML = ''
     array.forEach(obj => {
+
         var lessonId = obj.id
         var lessonTime = obj.lesson_time
         var patronObj = obj.patron
@@ -35,6 +61,7 @@ const createLessonCards = (array) => {
         var instrumentObj = obj.instrument
         var instrumentArray = Object.values(instrumentObj);
         var instrumentName = instrumentArray[1]
+
 //        console.log(lessonId)
 //        console.log(lessonTime)
 //        console.log(patronObj)
@@ -43,6 +70,7 @@ const createLessonCards = (array) => {
 //        console.log(instructorName)
 //        console.log(instrumentObj)
 //        console.log(instrumentName)
+
         let lessonCard = document.createElement("div")
         lessonCard.innerHTML = `
             <h2>${patronName} with ${instructorName}</h2>
