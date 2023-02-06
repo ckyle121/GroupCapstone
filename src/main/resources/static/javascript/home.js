@@ -22,7 +22,7 @@ async function addNote() {
             patron,
             instructor,
             instrument,
-            // TIMESTAMP
+            // TIMESTAMP NEEDS TO GO HERE
         }),
         headers: headers
     })
@@ -31,7 +31,6 @@ async function addNote() {
         return getAllLessons();
     }
 }
-
 
 // GET ALL LESSON FUNCTION
 async function getAllLessons() {
