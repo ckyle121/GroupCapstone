@@ -9,13 +9,29 @@ const headers = {
 }
 
 
-async function addNote() {
+// ADD PATRON
+
+// ADD INSTRUMETN
+
+// ADD INSTRUCTOR
+
+// ADD LESSON FUNCTIONALITY
+
+
+async function addLesson() {
+
+    /
     const patron = document.querySelector(".patron").value;
     const instrument = document.querySelector(".instrument").value;
     const instructor = document.querySelector(".instructor").value;
     // NEED TO ALSO GET THE TIMESTAMP
     // const lessonTime =
 
+    // ADD INSTRUCTOR FUNCTION CALL
+
+    // ADD PATRON FUNCTION CALL
+
+    // ADD INSRUMENT FUNCTION CALL
     const response = await fetch(`${baseUrl}`, {
         method: "POST",
         body: JSON.stringify({
