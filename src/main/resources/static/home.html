@@ -17,6 +17,53 @@
 <!--LESSON CARDS-->
 <div class="container" id="lessonContainer"></div>
 
+<!-- ADD PATRON CONTAINER-->
+<div class="container">
+    <h4>Add Patron</h4>
+    <input
+            type="text"
+            placeholder="Patron Name"
+            name="Patron"
+            value="Patron"
+    >
+    <button class="add-btn" onclick="handleSubmit">Add Patron</button>
+</div>
+
+<!-- ADD INSTRUCTOR CONTAINER-->
+<div class="container">
+    <h4>Add Instructor</h4>
+    <input
+            type="text"
+            placeholder="Instructor Name"
+            name="Instructor"
+            value="Instructor"
+    >
+    <button class="add-btn" onclick="addInstructor">Add Instructor</button>
+</div>
+
+<!-- ADD INSTRUMENT CONTAINER-->
+<div class="container">
+    <h4>Add Instrument</h4>
+    <input
+            type="text"
+            placeholder="Instrument"
+            name="Instrument"
+            value="Instrument"
+    >
+    <input
+            type="text"
+            placeholder="Price"
+            name="Price"
+            value="Price"
+    >
+    <input
+            type="text"
+            placeholder="Quantity"
+            name="Quantity"
+            value="Quantity"
+    >
+    <button class="add-btn" onclick="addInstrument">Add Instrument</button>
+</div>
 
 <!--ADD LESSON CONTAINER-->
 
@@ -42,9 +89,14 @@
             value="Instrument"
             id="instrument"
     >
+    <input
+            type="datetime-local"
+            id="lesson-time"
+            name="datetime"
+    >
 <!--    ADD INPUT VALUE FOR TIMESTAMP-->
 
-    <button class="add-btn">Add Lesson</button>
+    <button class="add-btn" id="add-button" onClick="handleSubmit">Add Lesson</button>
 </div>
 
 <script src="./javascript/home.js" type="application/javascript"></script>
