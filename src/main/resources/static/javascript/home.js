@@ -1,5 +1,8 @@
 // DOM ELEMENTS
 const lessonContainer = document.getElementById('lessonContainer');
+let patronBtn = document.getElementById('add-patron')
+let instructorBtn = document.getElementById('add-instructor')
+let instrumentBtn = document.getElementById('add-instrument')
 
 // BASE URL
 const baseUrl = "http://localhost:8080/api/v1/lessons/"
@@ -10,7 +13,7 @@ const headers = {
 
 const timestamp = document.getElementById('lesson-time');
 const date = new Date(timestamp * 1000);
-const dateValues = [
+const dateValues = [  //not sure is this is right or how to use it..
     date.getFullYear(),
     date.getMonth()+1,
     date.getDate(),
@@ -19,60 +22,61 @@ const dateValues = [
     date.getSeconds()
 ];
 
-const handleSubmit = async (e) => {
+///This function does not make a patron, instructor or instrument it just gets it from the form
+
+//const handleSubmit = async (e) => {
+//    e.preventDefault()
+//
+//    let bodyObj = {
+//        patron: document.querySelector("#patron").value,  //need new name as there is already a patron
+//        instrument: document.querySelector("#instrument").value,  //need new name
+//        instructor: document.querySelector("#instructor").value,  //need new name
+//        timestamp: document.querySelector("#lesson-time").value
+//    }
+//
+//    const response = await fetch(`${baseUrl}`, {
+//        method: "POST",
+//        body: JSON.stringify(bodyObj),
+//        headers: headers
+//    })
+//        .then(response => response.json())
+//        .catch(err => console.error(err.message))
+//
+//    if (response.status == 200) {
+//        return getAllLessons();
+//    }
+
+const handleSubmit2 = async (e) => {
     e.preventDefault()
 
-    addPatron({
+    let patronObj = {
         id: null,
         patronName: document.querySelector("#patron").value,
         lessons: null
-    })
-
-    addInstructor({
-            id: null,
-            instructorName: document.querySelector("#instructor").value,
-            lessons: null
-    })
-
-    addInstrument({
-                id: null,
-                instrumentName: document.querySelector("#instrument").value,
-                price: null,
-                quantity: null,
-                lessons: null
-    })
-
-
-    let bodyObj = {
-        patron: document.querySelector("#patron").value,
-        instrument: document.querySelector("#instrument").value,
-        instructor: document.querySelector("#instructor").value,
-        timestamp: document.querySelector("#lesson-time").value
     }
+    await addPatron2(patronObj);
+}
 
-    const response = await fetch(`${baseUrl}`, {
-        method: "POST",
-        body: JSON.stringify(bodyObj),
-        headers: headers
-    })
-        .then(response => response.json())
-        .catch(err => console.error(err.message))
-
-    if (response.status == 200) {
-        return getAllLessons();
-    }
-
-
-const addPatron = async (e) => {
-    e.preventDefault()
-
-    const response = await fetch(`http://localhost:8080/api/v1/patrons/addPatron`, {
+async function addPatron2(obj) {
+    console.log("add patron test")
+    const response = await fetch(`http://localhost:8080/api/v1/patrons`, {
         method: "POST",
         body: JSON.stringify(obj),
         headers: headers
     })
 
     .catch(err => console.error(err.message))
+}
+
+const handleSubmit3 = async (e) => {
+    e.preventDefault()
+
+    let instructorObj = {
+        id: null,
+        instructorName: document.querySelector("#instructor").value,
+        lessons: null
+    }
+    await addInstructor(instructorObj);
 }
 
 async function addInstructor(obj) {
@@ -85,6 +89,19 @@ async function addInstructor(obj) {
     .catch(err => console.error(err.message))
 }
 
+const handleSubmit4 = async (e) => {
+    e.preventDefault()
+
+    let instrumentObj = {
+        id: null,
+        instrumentName: document.querySelector("#instrument").value,
+        price: document.querySelector("#price").value,
+        quantity: document.querySelector("#quantity").value,
+        lessons: null
+    }
+    await addInstrument(instrumentObj);
+}
+
 async function addInstrument(obj) {
     const response = await fetch(`http://localhost:8080/api/v1/instruments`, {
         method: "POST",
@@ -94,8 +111,6 @@ async function addInstrument(obj) {
 
     .catch(err => console.error(err.message))
 }
-}
-
 
 // GET ALL LESSON FUNCTION
 async function getAllLessons() {
@@ -152,4 +167,7 @@ const createLessonCards = (array) => {
 // CALL GET ALL LESSONS FUNCTION
 getAllLessons()
 
-document.querySelector("#add-button").addEventListener("click", handleSubmit)
+//document.querySelector("#add-button").addEventListener("click", handleSubmit)
+patronBtn.addEventListener("click", handleSubmit2)
+instructorBtn.addEventListener("click", handleSubmit3)
+instrumentBtn.addEventListener("click", handleSubmit4)

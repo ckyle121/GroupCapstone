@@ -25,8 +25,9 @@
             placeholder="Patron Name"
             name="Patron"
             value="Patron"
+            id="patron"
     >
-    <button class="add-btn" onclick="handleSubmit">Add Patron</button>
+    <button class="add-btn" id="add-patron">Add Patron</button>
 </div>
 
 <!-- ADD INSTRUCTOR CONTAINER-->
@@ -37,8 +38,9 @@
             placeholder="Instructor Name"
             name="Instructor"
             value="Instructor"
+            id="instructor"
     >
-    <button class="add-btn" onclick="addInstructor">Add Instructor</button>
+    <button class="add-btn" id="add-instructor">Add Instructor</button>
 </div>
 
 <!-- ADD INSTRUMENT CONTAINER-->
@@ -49,52 +51,44 @@
             placeholder="Instrument"
             name="Instrument"
             value="Instrument"
+            id="instrument"
     >
     <input
             type="text"
             placeholder="Price"
             name="Price"
             value="Price"
+            id="price"
     >
     <input
             type="text"
             placeholder="Quantity"
             name="Quantity"
             value="Quantity"
+            id="quantity"
     >
-    <button class="add-btn" onclick="addInstrument">Add Instrument</button>
+    <button class="add-btn" id="add-instrument">Add Instrument</button>
 </div>
 
 <!--ADD LESSON CONTAINER-->
 
 <div class="container">
-    <input
-            type="text"
-            placeholder="Patron Name"
-            name="Patron"
-            value="Patron"
-            id="patron"
-    >
-    <input
-            type="text"
-            placeholder="Instructor Name"
-            name="Instructor"
-            value="Instructor"
-            id="instructor"
-    >
-    <input
-            type="text"
-            placeholder="Instrument Type"
-            name="Instrument"
-            value="Instrument"
-            id="instrument"
-    >
+    <h4>Add Lesson</h4>
+
+<!--    <input-->
+<!--            Patron drop down menu-->
+<!--    >-->
+<!--    <input-->
+<!--            Instructor drop down menu-->
+<!--    >-->
+<!--    <input-->
+<!--            Instrument drop down menu-->
+<!--    >-->
     <input
             type="datetime-local"
             id="lesson-time"
             name="datetime"
     >
-<!--    ADD INPUT VALUE FOR TIMESTAMP-->
 
     <button class="add-btn" id="add-button" onClick="handleSubmit">Add Lesson</button>
 </div>
