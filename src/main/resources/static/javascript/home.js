@@ -3,6 +3,7 @@ const lessonContainer = document.getElementById('lessonContainer');
 let patronBtn = document.getElementById('add-patron')
 let instructorBtn = document.getElementById('add-instructor')
 let instrumentBtn = document.getElementById('add-instrument')
+let addLessonBtn = document.getElementById('add-button')
 
 // BASE URL
 const baseUrl = "http://localhost:8080/api/v1/lessons/"
@@ -23,6 +24,7 @@ const dateValues = [  //not sure is this is right or how to use it..
 ];
 
 ///This function does not make a patron, instructor or instrument it just gets it from the form
+
 
 //const handleSubmit = async (e) => {
 //    e.preventDefault()
@@ -124,6 +126,16 @@ async function getAllLessons() {
         .catch(err => console.error(err))
 }
 
+//Get all Patrons
+async function getAllPatrons() {
+    await fetch(`http://localhost:8080/api/v1/patrons`, {
+        method: "GET",
+        headers: headers
+    })
+        .then(response => response.json())
+        .catch(err => console.error(err))
+}
+
 // CREATE LESSON CARDS
 const createLessonCards = (array) => {
     lessonContainer.innerHTML = ''
@@ -167,7 +179,8 @@ const createLessonCards = (array) => {
 // CALL GET ALL LESSONS FUNCTION
 getAllLessons()
 
-//document.querySelector("#add-button").addEventListener("click", handleSubmit)
+
+//addLessonBtn.addEventListener("click", handleSubmit)
 patronBtn.addEventListener("click", handleSubmit2)
 instructorBtn.addEventListener("click", handleSubmit3)
 instrumentBtn.addEventListener("click", handleSubmit4)
