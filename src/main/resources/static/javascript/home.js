@@ -172,24 +172,6 @@ const createLessonCards = (array) => {
 
 
 // DELETE LESSON FUNCTION
-
-=======
-        var patronName = patronArray[1]
-        var instructorObj = obj.instructor
-        var instructorArray = Object.values(instructorObj);
-        var instructorName = instructorArray[1]
-        var instrumentObj = obj.instrument
-        var instrumentArray = Object.values(instrumentObj);
-        var instrumentName = instrumentArray[1]
-        console.log(lessonId)
-        console.log(lessonTime)
-        console.log(patronObj)
-        console.log(patronName)
-        console.log(instructorObj)
-        console.log(instructorName)
-        console.log(instrumentObj)
-        console.log(instrumentName)
->>>>>>> .merge_file_YtAPhD
         let lessonCard = document.createElement("div")
         lessonCard.innerHTML = `
             <h2>${patronName} with ${instructorName}</h2>
@@ -201,8 +183,6 @@ const createLessonCards = (array) => {
     })
 }
 
-<<<<<<< .merge_file_AdZIBV
-=======
 // DELETE LESSON FUNCTION
 async function handleDelete(lessonId){
     await fetch(baseUrl + lessonId, {
@@ -210,7 +190,6 @@ async function handleDelete(lessonId){
         headers: headers
     })
         .catch(err => console.error(err))
->>>>>>> .merge_file_YtAPhD
 
     return getAllLessons();
 }
