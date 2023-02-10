@@ -12,41 +12,65 @@ const headers = {
     'Content-Type': 'application/json'
 }
 
-const timestamp = document.getElementById('lesson-time');
-const date = new Date(timestamp * 1000);
-const dateValues = [  //not sure is this is right or how to use it..
-    date.getFullYear(),
-    date.getMonth()+1,
-    date.getDate(),
-    date.getHours(),
-    date.getMinutes(),
-    date.getSeconds()
-];
+//const timestamp = document.getElementById('lesson-time');
+//const date = new Date(timestamp * 1000);
+//const dateValues = [  //not sure is this is right or how to use it..
+//    date.getFullYear(),
+//    date.getMonth()+1,
+//    date.getDate(),
+//    date.getHours(),
+//    date.getMinutes(),
+//    date.getSeconds()
+//];
+
+//Updated readable date info:
+const timestampInput = document.getElementById('lesson-time');
+timestampInput.addEventListener('change', function() {
+    const timestamp = Date.parse(this.value);
+    const date = new Date(timestamp);
+    const dateString = date.toLocaleDateString();
+    const timeString = date.toLocaleTimeString();
+
+    const dateTimeString = dateString + ' ' + timeString;
+    document.getElementById('selected-datetime').innerHTML = dateTimeString;
+});
 
 ///This function does not make a patron, instructor or instrument it just gets it from the form
 
 
-//const handleSubmit = async (e) => {
-//    e.preventDefault()
-//
-//    let bodyObj = {
-//        patron: document.querySelector("#patron").value,  //need new name as there is already a patron
-//        instrument: document.querySelector("#instrument").value,  //need new name
-//        instructor: document.querySelector("#instructor").value,  //need new name
+const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    let bodyObj = {
+        patron: document.querySelector("#patron").value,  //need new name as there is already a patron
+        instrument: document.querySelector("#instrument").value,  //need new name
+        instructor: document.querySelector("#instructor").value,  //need new name
 //        timestamp: document.querySelector("#lesson-time").value
-//    }
-//
-//    const response = await fetch(`${baseUrl}`, {
-//        method: "POST",
-//        body: JSON.stringify(bodyObj),
-//        headers: headers
-//    })
-//        .then(response => response.json())
-//        .catch(err => console.error(err.message))
-//
-//    if (response.status == 200) {
-//        return getAllLessons();
-//    }
+
+         // Get the input value from the "lesson-time" element
+        timestamp: document.querySelector("#lesson-time").value,
+
+            // Use the Date object to parse the input value into a valid date object
+        date: new Date(timestamp)
+
+            // Check if the date is invalid
+//            if (isNaN(date.getTime())) {
+//                console.error("Invalid date input:", timestamp);
+//                return;
+            }
+    }
+
+    const response = await fetch(`${baseUrl}`, {
+        method: "POST",
+        body: JSON.stringify(bodyObj),
+        headers: headers
+    })
+        .then(response => response.json())
+        .catch(err => console.error(err.message))
+
+    if (response.status == 200) {
+        return getAllLessons();
+    }
 
 const handleSubmit2 = async (e) => {
     e.preventDefault()
@@ -141,17 +165,19 @@ const createLessonCards = (array) => {
     lessonContainer.innerHTML = ''
     array.forEach(obj => {
 
-        var lessonId = obj.id
-        var lessonTime = obj.lesson_time //need to be converted to a prettier format (readable timestamp)
-        var patronObj = obj.patron
+        let lessonTimestamp = obj.lesson_time;
+        //let lessonDate = new Date(lessonTimestamp * 1000);
+        let lessonDate = new Date(obj.lessonDate);
+        let lessonTime = lessonDate.toLocaleString();
+        let patronObj = obj.patron
         let patronArray = Object.values(patronObj);
-        var patronName = patronArray[1]
-        var instructorObj = obj.instructor
-        var instructorArray = Object.values(instructorObj);
-        var instructorName = instructorArray[1]
-        var instrumentObj = obj.instrument
-        var instrumentArray = Object.values(instrumentObj);
-        var instrumentName = instrumentArray[1]
+        let patronName = patronArray[1]
+        let instructorObj = obj.instructor
+        let instructorArray = Object.values(instructorObj);
+        let instructorName = instructorArray[1]
+        let instrumentObj = obj.instrument
+        let instrumentArray = Object.values(instrumentObj);
+        let instrumentName = instrumentArray[1]
 
 //        console.log(lessonId)
 //        console.log(lessonTime)
@@ -165,7 +191,7 @@ const createLessonCards = (array) => {
         let lessonCard = document.createElement("div")
         lessonCard.innerHTML = `
             <h2>${patronName} with ${instructorName}</h2>
-            <h4>${lessonTime}</h4> //want to make this a pretty timestamp
+            <h4>${lessonDate.toLocaleString()}</h4>
             <h4>${instrumentName}</h4>
             <button class="delete-btn" onclick="handleDelete(${obj.id})">Delete</button>  
         `
@@ -180,7 +206,7 @@ const createLessonCards = (array) => {
 getAllLessons()
 
 
-//addLessonBtn.addEventListener("click", handleSubmit)
+addLessonBtn.addEventListener("click", handleSubmit)
 patronBtn.addEventListener("click", handleSubmit2)
 instructorBtn.addEventListener("click", handleSubmit3)
 instrumentBtn.addEventListener("click", handleSubmit4)
