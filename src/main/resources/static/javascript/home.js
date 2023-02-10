@@ -11,16 +11,29 @@ const headers = {
     'Content-Type': 'application/json'
 }
 
-const timestamp = document.getElementById('lesson-time');
-const date = new Date(timestamp * 1000);
-const dateValues = [  //not sure is this is right or how to use it..
-    date.getFullYear(),
-    date.getMonth()+1,
-    date.getDate(),
-    date.getHours(),
-    date.getMinutes(),
-    date.getSeconds()
-];
+//const timestamp = document.getElementById('lesson-time');
+//const date = new Date(timestamp * 1000);
+//const dateValues = [  //not sure is this is right or how to use it..
+//    date.getFullYear(),
+//    date.getMonth()+1,
+//    date.getDate(),
+//    date.getHours(),
+//    date.getMinutes(),
+//    date.getSeconds()
+//];
+
+//Updated readable date info:
+const timestampInput = document.getElementById('lesson-time');
+timestampInput.addEventListener('change', function() {
+    const timestamp = this.value;
+    const date = new Date(timestamp);
+    const dateString = date.toLocaleDateString();
+    const timeString = date.toLocaleTimeString();
+
+    const dateTimeString = dateString + ' ' + timeString;
+    document.getElementById('selected-datetime').innerHTML = dateTimeString;
+});
+
 
 //This was removed and is no longer relevant:
 
@@ -37,57 +50,6 @@ const handleSubmit = async (e) => {
     }
 
     //when you first load the page, you need a fetch to fetch the instructor, patron, instrument.
-
-
-    const createLesson = (array) => {
-    console.log("logging array in CreateDrugFieldData", array)
-    patientPrescriptionsDisplay.innerHTML = ''
-    array.forEach(obj => {
-    let drugFields = document.createElement("div")
-    drugFields.innerHTML = `
-    <div class="accordion d-grid gap-3" id="accordionExample">
-    	<div class="accordion-item">
-    		<h2 class="accordion-header" id="headingOne">
-    			<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-    			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule-pill" viewBox="0 0 16 16">
-                  <path d="M11.02 5.364a3 3 0 0 0-4.242-4.243L1.121 6.778a3 3 0 1 0 4.243 4.243l5.657-5.657Zm-6.413-.657 2.878-2.879a2 2 0 1 1 2.829 2.829L7.435 7.536 4.607 4.707ZM12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm-.5 1.042a3 3 0 0 0 0 5.917V9.042Zm1 5.917a3 3 0 0 0 0-5.917v5.917Z"/>
-                </svg>&ensp;Adverse Reactions
-            </button>
-    		</h2>
-    		<div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-    			<div class="accordion-body">
-    				<p>${obj.adverse_reactions}</p>
-    			</div>
-    		</div>
-    	</div>
-    	<div class="accordion-item">
-    		<h2 class="accordion-header" id="headingTwo">
-    			<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule-pill" viewBox="0 0 16 16">
-                  <path d="M11.02 5.364a3 3 0 0 0-4.242-4.243L1.121 6.778a3 3 0 1 0 4.243 4.243l5.657-5.657Zm-6.413-.657 2.878-2.879a2 2 0 1 1 2.829 2.829L7.435 7.536 4.607 4.707ZM12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm-.5 1.042a3 3 0 0 0 0 5.917V9.042Zm1 5.917a3 3 0 0 0 0-5.917v5.917Z"/>
-                </svg>&ensp;Contraindications
-            </button>
-    		</h2>
-    		<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-    			<div class="accordion-body">
-    				<p>${obj.contraindications}</p>
-    			</div>
-    		</div>
-    	</div>
-    	<div class="accordion-item">
-    		<h2 class="accordion-header" id="headingThree">
-    			<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule-pill" viewBox="0 0 16 16">
-                  <path d="M11.02 5.364a3 3 0 0 0-4.242-4.243L1.121 6.778a3 3 0 1 0 4.243 4.243l5.657-5.657Zm-6.413-.657 2.878-2.879a2 2 0 1 1 2.829 2.829L7.435 7.536 4.607 4.707ZM12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm-.5 1.042a3 3 0 0 0 0 5.917V9.042Zm1 5.917a3 3 0 0 0 0-5.917v5.917Z"/>
-                </svg>&ensp;Drug Interactions
-        </button>
-    		</h2>
-    		<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-    			<div class="accordion-body">
-    				<p>${obj.drug_interactions}</p>
-    			</div>
-    		</div>
-    	</div>
 
 
     const response = await fetch(`${baseUrl}`, {
@@ -185,11 +147,12 @@ const createLessonCards = (array) => {
     lessonContainer.innerHTML = ''
     array.forEach(obj => {
 
-        let lessonId = obj.id
-        let lessonTime = obj.lesson_time //need to be converted to a prettier format (readable timestamp)
+ let lessonId = obj.id
+        let lessonTimestamp = obj.lesson_time;
+        let lessonDate = new Date(lessonTimestamp * 1000);
+        let lessonTime = lessonDate.toLocaleString();
         let patronObj = obj.patron
         let patronArray = Object.values(patronObj);
-<<<<<<< .merge_file_AdZIBV
         let patronName = patronArray[1]
         let instructorObj = obj.instructor
         let instructorArray = Object.values(instructorObj);

@@ -85,11 +85,18 @@
 <!--    <input-->
 <!--            Instrument drop down menu-->
 <!--    >-->
+
+
     <input
             type="datetime-local"
             id="lesson-time"
             name="datetime"
     >
+
+<!--    Updated Readable Date:-->
+    <p>Selected date and time: <span id="selected-datetime">{{dateTimeString}}</span></p>
+
+
 
     <button class="add-btn" id="add-button" onClick="handleSubmit">Add Lesson</button>
 </div>
