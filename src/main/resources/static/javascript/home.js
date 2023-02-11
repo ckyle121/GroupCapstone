@@ -12,7 +12,7 @@ const headers = {
     'Content-Type': 'application/json'
 }
 
-const timestamp = document.getElementById('lesson-time');
+/*const timestamp = document.getElementById('lesson-time');
 const date = new Date(timestamp * 1000);
 const dateValues = [  //not sure is this is right or how to use it..
     date.getFullYear(),
@@ -21,7 +21,7 @@ const dateValues = [  //not sure is this is right or how to use it..
     date.getHours(),
     date.getMinutes(),
     date.getSeconds()
-];
+];*/
 
 ///This function does not make a patron, instructor or instrument it just gets it from the form
 
@@ -47,6 +47,67 @@ const dateValues = [  //not sure is this is right or how to use it..
 //    if (response.status == 200) {
 //        return getAllLessons();
 //    }
+
+const handleSubmit = async (e) => {
+    e.preventDefault()
+    let patronId = document.querySelector("#patron-select").value;
+    let instructorId = document.querySelector("#instructor-select").value;
+    let instrumentId = document.querySelector("#instrument-select").value;
+    let lessonTime = document.querySelector("#lesson-time").value;
+    /*let bodyObj = {
+        patronId: patronId,
+        instructorId: instructorId,
+        instrumentId: instrumentId,
+        lessonTime: lessonTime
+    }*/
+
+    let bodyObj = {
+        lesson_time: `${lessonTime}:00Z`,
+        instructor: {
+            id: instructorId
+        },
+        patron: {
+            id: patronId
+        },
+        instrument: {
+            id: instrumentId
+        }
+    }
+
+    await addLesson(bodyObj);
+
+}
+
+async function addLesson(obj) {
+    console.log(obj)
+    const response = await fetch(`http://localhost:8080/api/v1/lessons`, {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: headers
+    }).catch(err => console.error(err.message))
+}
+
+/*console.log(bodyObj)
+    console.log(JSON.stringify(bodyObj))
+    var strObj = JSON.stringify(bodyObj)
+    const response = await fetch(`http://localhost:8080/api/v1/lessons`, {
+        method: "POST",
+        body: strObj,
+        headers: headers
+    })
+        //.then(response => response.json())
+        .catch(error => {
+            console.error(error);
+            return error;
+        });
+    console.log(response);
+    if (response.status === 200) {
+        return getAllLessons();
+    }*/
+/*patronId: {"id": "4"},
+instructorId: {"id": "4"},
+instrumentId: {"id": "3"},
+lessonTime: "2023-05-31T05:00:00Z",*/
 
 const handleSubmit2 = async (e) => {
     e.preventDefault()
@@ -162,10 +223,22 @@ const createLessonCards = (array) => {
 //        console.log(instrumentObj)
 //        console.log(instrumentName)
 
+// Convert lessonTime to a readable timestamp
+        const date = new Date(lessonTime);
+        const options = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true
+        };
+        const formattedTime = date.toLocaleString('en-US', options);
+
         let lessonCard = document.createElement("div")
         lessonCard.innerHTML = `
             <h2>${patronName} with ${instructorName}</h2>
-            <h4>${lessonTime}</h4> //want to make this a pretty timestamp
+            <h4>${formattedTime}</h4>
             <h4>${instrumentName}</h4>
             <button class="delete-btn" onclick="handleDelete(${obj.id})">Delete</button>  
         `
@@ -174,13 +247,88 @@ const createLessonCards = (array) => {
 }
 
 // DELETE LESSON FUNCTION
+async function handleDelete(lessonId){
+    await fetch(baseUrl + lessonId, {
+        method: "DELETE",
+        headers: headers
+    })
+        .catch(err => console.error(err))
 
+    return getAllLessons();
+}
 
 // CALL GET ALL LESSONS FUNCTION
 getAllLessons()
 
 
-//addLessonBtn.addEventListener("click", handleSubmit)
+addLessonBtn.addEventListener("click", handleSubmit)
 patronBtn.addEventListener("click", handleSubmit2)
 instructorBtn.addEventListener("click", handleSubmit3)
 instrumentBtn.addEventListener("click", handleSubmit4)
+
+async function getPatrons() {
+    return await fetch(`http://localhost:8080/api/v1/patrons`, {
+        method: "GET",
+        headers: headers
+    })
+        .then(response => response.json())
+        .catch(err => console.error(err))
+}
+
+async function populatePatronDropdown() {
+    let patronSelect = document.getElementById("patron-select");
+    let patrons = await getPatrons();
+
+    patrons.forEach(patron => {
+        let option = document.createElement("option");
+        option.value = patron.id;
+        option.text = patron.patronName;
+        patronSelect.appendChild(option);
+    });
+}
+populatePatronDropdown()
+async function getInstructors() {
+    return await fetch(`http://localhost:8080/api/v1/instructors`, {
+        method: "GET",
+        headers: headers
+    })
+        .then(response => response.json())
+        .catch(err => console.error(err))
+}
+
+async function populateInstructorDropdown() {
+    let instructorSelect = document.getElementById("instructor-select");
+    let instructors = await getInstructors();
+
+    instructors.forEach(instructor => {
+        let option = document.createElement("option");
+        option.value = instructor.id;
+        option.text = instructor.instructorName;
+        instructorSelect.appendChild(option);
+    });
+}
+
+populateInstructorDropdown();
+
+async function getInstruments() {
+    return await fetch(`http://localhost:8080/api/v1/instruments`, {
+        method: "GET",
+        headers: headers
+    })
+        .then(response => response.json())
+        .catch(err => console.error(err))
+}
+
+async function populateInstrumentDropdown() {
+    let instrumentSelect = document.getElementById("instrument-select");
+    let instruments = await getInstruments();
+
+    instruments.forEach(instrument => {
+        let option = document.createElement("option");
+        option.value = instrument.id;
+        option.text = instrument.instrumentName;
+        instrumentSelect.appendChild(option);
+    });
+}
+
+populateInstrumentDropdown();
