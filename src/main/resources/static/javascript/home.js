@@ -85,7 +85,10 @@ async function addLesson(obj) {
         body: JSON.stringify(obj),
         headers: headers
     }).catch(err => console.error(err.message))
+
+    return getAllLessons();
 }
+getAllLessons()
 
 /*console.log(bodyObj)
     console.log(JSON.stringify(bodyObj))
