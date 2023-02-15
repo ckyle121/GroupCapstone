@@ -1,8 +1,8 @@
 /* everything */
 * {
-        background-color: #B4CF66;
+        background-color: #67bdd3;
         font-family: 'Roboto', sans-serif;
-        color: #F2B705;
+        color: rgba(0, 81, 255, 0.308);
         box-sizing: border-box;
         padding: 0;
         margin: 0;
@@ -13,26 +13,29 @@
 /* the title */
 h1 {
     text-align: center;
-    color: #FF5A33;
+    color: rgba(0, 81, 255, 0.308);
 }
 
 /* lesson cards */
 .container, h2, h4, form {
     margin: 1rem;
-    padding: 0.5rem;
-    background-color: #146152;
+    background-color: #f5f5dc;
     border-radius: 10px;
 }
 
+h2, h4, form {
+    padding: 0.5rem;
+}
+
 input {
-    background-color: #FF5A33;
+    background-color: #67bdd3;
     padding: 0.75rem;
     margin: 0.25rem;
+    color: rgba(0, 81, 255, 0.308);
 }
 
 /*delete button*/
 .delete-btn {
-
     color: white;
     padding: 8px;
     background-color: red;
@@ -47,7 +50,7 @@ input {
 .add-btn {
     color: white;
     padding: 8px;
-    background-color: rgb(179, 0, 255);
+    background-color: rgba(0, 81, 255, 0.308);
     border-radius: 10px;
     margin: 10px;
     cursor: pointer;
