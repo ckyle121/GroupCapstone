@@ -1,8 +1,8 @@
 /* everything */
 * {
-        background-color: #B4CF66;
+        background-color: #E4DDC9;
         font-family: 'Roboto', sans-serif;
-        color: #F2B705;
+        color: black;
         box-sizing: border-box;
         padding: 0;
         margin: 0;
@@ -13,19 +13,31 @@
 /* the title */
 h1 {
     text-align: center;
-    color: #FF5A33;
+    color: black;
 }
+
+/* lesson cards
+.container, h2, h4, form {
+    margin: 1rem;
+    padding: 0.25rem;
+    background-color: #A8C8E3;
+    border-radius: 10px;
+}
+*/
 
 /* lesson cards */
 .container, h2, h4, form {
     margin: 1rem;
-    padding: 0.5rem;
-    background-color: #146152;
+    background-color: #A8C8E3;
     border-radius: 10px;
 }
 
+container, form {
+    padding: 0.5rem;
+}
+
 input {
-    background-color: #FF5A33;
+    background-color: #E4DDC9;
     padding: 0.75rem;
     margin: 0.25rem;
 }
@@ -47,7 +59,7 @@ input {
 .add-btn {
     color: white;
     padding: 8px;
-    background-color: rgb(179, 0, 255);
+    background-color: #9C9481;
     border-radius: 10px;
     margin: 10px;
     cursor: pointer;
