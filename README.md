@@ -101,4 +101,4 @@ Let's connect!
 </a>
 </p>
 
-Caroline Kyle lives in Bentonville, AR. With nearly two years of expereince developing user friendly applications, Caroline also has experience in teaching software engineering courses in both Java and JavaScript and mentors junior engineers. Caroline is committed to continuously improving her skills as an engineer to make valuable contributions to both the tech community and future generations of engineers. In addition to software development, Caroline enjoys riding her bike and spending time with her cat, Rhino.
+Caroline Kyle lives in Bentonville, AR. With nearly two years of expereince developing user friendly applications, Caroline also has experience in teaching software engineering courses in Java and JavaScript and mentoring junior engineers. Caroline is committed to continuously improving her skills as an engineer to make valuable contributions to both the tech community and future generations of engineers. In addition to software development, Caroline enjoys riding her bike and spending time with her cat, Rhino.
