@@ -1,4 +1,4 @@
-# GroupCapstone
+# Music Store 
 
 We created a back of office application for a manager of a Music Store that sells instruments and also offers lessons to their patrons.
 
