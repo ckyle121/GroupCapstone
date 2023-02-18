@@ -91,7 +91,7 @@ Navigate to `localhost:8080/home.html`
 
 Jessica Faylor is a software engineer in California, and previously worked in various fields, including finance, accounting and administration. A combination of her love for family time, learning new things, and less screaming children, led to the creation of FamTrip, her capstone project for Walmart's Java Fellowship program.
 
-Let's connect!
+Connect with Jessica: 
 
 <p><a href="https://www.linkedin.com/in/jessica-faylor-0377b35/">
   <img
@@ -102,3 +102,13 @@ Let's connect!
 </p>
 
 Caroline Kyle lives in Bentonville, AR. With nearly two years of expereince developing user friendly applications, Caroline also has experience in teaching software engineering courses in Java and JavaScript and mentoring junior engineers. Caroline is committed to continuously improving her skills as an engineer to make valuable contributions to both the tech community and future generations of engineers. In addition to software development, Caroline enjoys riding her bike and spending time with her cat, Rhino.
+
+Connect with Caroline: 
+<p><a href="https://www.linkedin.com/in/ckyle121">
+  <img
+    alt="LinkedIn"
+    src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"
+  />
+</a>
+</p>
+
