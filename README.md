@@ -25,27 +25,27 @@ The application allows the user to add a new patron, add a new instructor, and a
 
 ![homepage](src/main/resources/static/img/homepage.png "homepage")
 
-### ADD PATRON
+#### ADD PATRON
 
 Users can create a new patron and save them to the database.
 
-### ADD INSTRUCTOR
+#### ADD INSTRUCTOR
 
 Users can create a new instructor and save them to the database. 
 
-### ADD INSTRUMENT
+#### ADD INSTRUMENT
 
 Users can create a new instrument or update inventory and save it to the database.
 
-### ADD LESSON
+#### ADD LESSON
 
 Users can create a new lesson using drop down menus populated by the database and save each lesson in the database.
 
-### CREATE LESSON CARDS
+#### CREATE LESSON CARDS
 
 Once a user creates a new lesson, the lesson will automatically be displayed on the home page listed in calendar order.
 
-### DELETE LESSON
+#### DELETE LESSON
 
 Once a lesson has been completed or the lesson is cancelled, the user can delete the lesson from the homepage and database.
 
