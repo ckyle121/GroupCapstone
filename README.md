@@ -5,6 +5,11 @@ We created a back of office application for a manager of a Music Store that sell
 The application allows the user to add a new patron, add a new instructor, and add inventory. Once our database is populated then you can create a new lesson which will be displayed on the main home page. By keeping everything on one page we improve the user experience and make sure that everything they need is visible right there.
 
 
+## Below is GIF of the app:
+
+![MusicStore](https://github.com/ckyle121/MusicStore/blob/main/MusicStore.gif)
+
+
 ![lessoncards](src/main/resources/static/img/lessoncards.png "lessoncards")
 
 **CONTENTS**
