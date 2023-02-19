@@ -10,7 +10,6 @@ The application allows the user to add a new patron, add a new instructor, and a
 ![MusicStore](https://github.com/ckyle121/MusicStore/blob/main/MusicStore.gif)
 
 
-![lessoncards](src/main/resources/static/img/lessoncards.png "lessoncards")
 
 **CONTENTS**
 
@@ -28,7 +27,6 @@ The application allows the user to add a new patron, add a new instructor, and a
 
 ## Features
 
-![homepage](src/main/resources/static/img/homepage.png "homepage")
 
 #### ADD PATRON
 
